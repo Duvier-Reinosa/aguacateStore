@@ -1,11 +1,25 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import NavBar from "../components/NavBar"
 
 const Home = () => {
+    const [productList, setProductList] = useState<TProduct[]>([])
+
+    useEffect(() => {
+        window.fetch("http://localhost:3000/api/avo")
+        .then((response:any) => 
+            response.json()
+        ).then(({ data, length }) => {
+            setProductList(data
+        )})
+    },[])
+
     return (
         <div>
             <NavBar />
             <h1>Home</h1>
+            {productList.map((product:any) => (
+                <div>{product.name}</div>
+            ) )}
         </div>
     )
 }
