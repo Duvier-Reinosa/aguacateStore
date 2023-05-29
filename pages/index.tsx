@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import NavBar from "../components/NavBar"
+import NavBar from "../components/NavBar/NavBar"
 import { useRouter } from "next/router"
 
 const Home = () => {
@@ -17,7 +17,6 @@ const Home = () => {
 
     return (
         <div>
-            <NavBar />
             <h1>Home</h1>
             {productList.map((product:any) => (
                 <div onClick={ () => Router.push(`/product/${product.id}`)}>{product.name}</div>
