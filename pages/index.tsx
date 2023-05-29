@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"
 import NavBar from "../components/NavBar"
+import { useRouter } from "next/router"
 
 const Home = () => {
+    const Router = useRouter()
     const [productList, setProductList] = useState<TProduct[]>([])
 
     useEffect(() => {
@@ -18,7 +20,7 @@ const Home = () => {
             <NavBar />
             <h1>Home</h1>
             {productList.map((product:any) => (
-                <div>{product.name}</div>
+                <div onClick={ () => Router.push(`/product/${product.id}`)}>{product.name}</div>
             ) )}
         </div>
     )
