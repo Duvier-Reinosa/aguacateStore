@@ -9,8 +9,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "type-check": "tsc --noEmit"
+    "start": "next start"
   },
   "dependencies": {
     "@types/cors": "^2.8.6",
