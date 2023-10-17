@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import { Container } from 'semantic-ui-react'
-
-import Navbar from '@components/Navbar/Navbar'
+import Navbar from '@components/NavBar/NavBar'
 import Footer from '@components/Footer/Footer'
 
 type LayoutProps = {
