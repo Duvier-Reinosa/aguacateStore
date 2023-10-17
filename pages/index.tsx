@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from "react"
-import NavBar from "../components/NavBar/NavBar"
-import { useRouter } from "next/router"
+import React, { useState, useEffect } from 'react'
+import Layout from '@components/Layout/Layout'
+import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
+import ProductList from '@components/ProductList/ProductList'
 
-const Home = () => {
-    const Router = useRouter()
-    const [productList, setProductList] = useState<TProduct[]>([])
+const HomePage = () => {
+  const [productList, setProductList] = useState<TProduct[]>([])
 
-    useEffect(() => {
-        window.fetch("http://localhost:3000/api/avo")
-        .then((response:any) => 
-            response.json()
-        ).then(({ data, length }) => {
-            setProductList(data
-        )})
-    },[])
+  useEffect(() => {
+    window
+      .fetch('/api/avo')
+      .then((response) => response.json())
+      .then(({ data }: TAPIAvoResponse) => {
+        setProductList(data)
+      })
+  }, [])
 
-    return (
-        <div>
-            <h1>Home</h1>
-            {productList.map((product:any) => (
-                <div onClick={ () => Router.push(`/product/${product.id}`)}>{product.name}</div>
-            ) )}
-        </div>
-    )
+  return (
+    <Layout>
+      <KawaiiHeader />
+      <ProductList products={productList} />
+    </Layout>
+  )
 }
 
-export default Home
+export default HomePage
